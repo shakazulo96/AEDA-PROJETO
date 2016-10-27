@@ -1,1 +1,0 @@
-O MATHEUS É GAY
