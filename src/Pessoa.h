@@ -1,29 +1,16 @@
 #pragma once
 
-
-
 using namespace std;
 
-class Pessoa
-{
-private:
+#include <string>
 
-
-
-
+class Pessoa{
+	string nome;
 public:
-
-
-	//Constructors
-
 	Pessoa();
+	Pessoa(string nome);
 
-	//Sets
+	string getNome() const;
 
-
-
-	//Gets
-
-
-
+	void setNome();
 };

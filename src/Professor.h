@@ -1,30 +1,11 @@
 #pragma once
 #include "Pessoa.h"
 
-
-
 using namespace std;
 
-class Professor : public Pessoa
-{
-private:
-
-
-
-
+class Professor : public Pessoa{
 public:
-
-
-	//Constructors
-
 	Professor();
-
-	//Sets
-
-
-
-	//Gets
-
-
+	Professor(string nome);
 
 };

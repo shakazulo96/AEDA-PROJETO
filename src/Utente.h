@@ -2,30 +2,10 @@
 
 #include "Pessoa.h"
 
-
-
 using namespace std;
 
-class Utente : public Pessoa
-{
-private:
-
-
-
-
+class Utente : public Pessoa{
 public:
-
-
-	//Constructors
-
 	Utente();
-
-	//Sets
-
-
-
-	//Gets
-
-
-
+	Utente(string nome);
 };
