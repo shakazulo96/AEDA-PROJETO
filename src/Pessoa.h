@@ -2,15 +2,16 @@
 
 using namespace std;
 
-#include <string>
+#include "utils.h"
 
 class Pessoa{
 	string nome;
+	vector<Data> horario;
 public:
 	Pessoa();
 	Pessoa(string nome);
 
 	string getNome() const;
 
-	void setNome();
+	void setNome(string nome);
 };

@@ -1,21 +1,25 @@
 #pragma once
 
 #include <vector>
+#include <string>
 
-#include "Utente.h"
-#include "Professor.h"
+#include "Pessoa.h"
 
-using namespace std;
 
 class Piscina{
-	vector<Utente * > clientes;
-	vector<Professor *> professores;
+	vector<Pessoa * > clientes;
+	vector<Pessoa *> professores;
+	int capacidade, numClientesAula;
+
+	string nome;
 public:
-	Piscina();
+	Piscina(string nome, int capacidade);
 	~Piscina();
 
-	Utente getClientes() const;
-	void addClientes(Utente *cliente);
-	Professor getProfessores() const;
-	void addProfessores(Professor *professor);
+	string getNome() const;
+
+	vector<Pessoa* > getClientes() const;
+	void addClientes(Pessoa *cliente);
+	vector<Pessoa* > getProfessores() const;
+	void addProfessores(Pessoa *professor);
 };

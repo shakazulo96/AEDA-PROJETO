@@ -1,21 +1,28 @@
-#pragma once
-
 #include "Piscina.h"
+using namespace std;
 
-Piscina::Piscina(){}
+Piscina::Piscina(string nome, int capacidade){
+	this->nome = nome;
+	this->capacidade = capacidade;
+	numClientesAula = 0;
+}
 Piscina::~Piscina(){}
 
+
+string Piscina::getNome() const{
+	return nome;
+}
 //Clientes
-Utente Piscina::getClientes() const{
+vector<Pessoa*> Piscina::getClientes() const{
 	return clientes;
 }
-void Piscina::addClientes(Utente *cliente){
+void Piscina::addClientes(Pessoa *cliente){
 	clientes.push_back(cliente);
 }
 //Professores
-Professor Piscina::getProfessores() const{
+vector<Pessoa*> Piscina::getProfessores() const{
 	return professores;
 }
-void Piscina::addProfessores(Professor *professor){
+void Piscina::addProfessores(Pessoa *professor){
 	professores.push_back(professor);
 }
