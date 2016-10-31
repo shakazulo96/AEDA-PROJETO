@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : main.cpp
-// Author      :
-// Version     :
+// Author      : Chewbacca
+// Version     :oh member chewbacca? oh i member
 // Copyright   : Your copyright notice
 // Description : Member when there weren’t so many Mehicans? Meeember?
 //============================================================================
@@ -30,13 +30,11 @@ int main() {
 
 	//Adiciona Clientes
 	piscina1.addClientes(pessoa1);
-
 	piscina2.addClientes(pessoa2);
 	piscina2.addClientes(pessoa3);
 
 	//Adiciona Professores
 	piscina1.addProfessores(professor1);
-
 	piscina2.addProfessores(professor2);
 	piscina2.addProfessores(professor3);
 
