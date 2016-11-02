@@ -3,6 +3,7 @@
 
 
 
+
 using namespace std;
 
 class ModoAula
@@ -27,7 +28,7 @@ public:
 
 
 	//Gets
-string getHorariodaAula() const;
+vector<Data> getHorariodaAula();
 string getProfessorResponsavel();
 int getNumUtentesAula();
 
