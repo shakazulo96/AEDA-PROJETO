@@ -4,26 +4,4 @@
 
 using namespace std;
 
-class ModoUsoPiscina
-{
-private:
-
-
-
-
-public:
-
-
-	//Constructors
-
-	ModoUsoPiscina();
-
-	//Sets
-
-
-
-	//Gets
-
-
-
-};
+// horario piscina e ocupação piscina, recibo e contas dos utentes

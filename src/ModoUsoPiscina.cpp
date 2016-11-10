@@ -3,6 +3,4 @@
 #include "ModoUsoPiscina.h"
 
 
-using namespace std;
-
-ModoUsoPiscina::ModoUsoPiscina() {};
+// horario piscina e ocupação piscina, recibo e contas dos utentes

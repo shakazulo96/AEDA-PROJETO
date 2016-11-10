@@ -9,6 +9,8 @@ private:
 	int dia;
 	int mes;
 	int ano;
+	int hora;
+	int minuto;
 	bool valid;
 
 public:
@@ -19,6 +21,8 @@ public:
 
 	Data(int d, int m, int a);
 
+	Data(int d, int m, int a, int h, int n);
+
 	Data(std::string s);
 
 	//Gets
@@ -26,6 +30,8 @@ public:
 	int getDia();
 	int getMes();
 	int getAno();
+	int getHora();
+	int getMinuto();
 	bool isValid();
 	std::string toString();
 
@@ -34,7 +40,9 @@ public:
 	void setDia(int d);
 	void setMes(int m);
 	void setAno(int a);
+	void setHora(int h);
+	void setMinuto(int n);
 
-	 /*Operator Overloading
-	friend std::ostream& operator<<(std::ostream& os, const Data& d);  */
+	 //Operator Overloading
+	friend std::ostream& operator<<(std::ostream& os, const Data& d);  
 };

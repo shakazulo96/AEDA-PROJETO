@@ -5,6 +5,7 @@ using namespace std;
 #include "utils.h"
 
 class Pessoa{
+	int ID;
 	string nome;
 	vector<Data> horario;
 public:

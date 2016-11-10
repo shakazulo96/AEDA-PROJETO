@@ -3,7 +3,11 @@
 
 using namespace std;
 
-class Professor : public Pessoa{
+class Professor : public Pessoa
+{
+private:
+	vector<Data> Horario;
+
 public:
 	Professor();
 	Professor(string nome);
