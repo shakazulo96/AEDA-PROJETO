@@ -11,5 +11,5 @@ private:
 public:
 	Professor();
 	Professor(string nome);
-
+	Professor(int ID, string nome, Data adesao);
 };

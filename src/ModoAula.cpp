@@ -1,8 +1,6 @@
 #pragma once
 
 #include "ModoAula.h"
-#include<fstream>
-#include <sstream>
 
 
 
@@ -10,7 +8,7 @@ using namespace std;
 
 ModoAula::ModoAula() {};
 
-vector<Data> getHorariodaAula(){
+/*vector<Data> getHorariodaAula(){
 	vector<Data> horario;
 	stringstream ss;
 	string line;
@@ -25,4 +23,4 @@ vector<Data> getHorariodaAula(){
 
 	 myReadFile.close();
 
-}
+}*/

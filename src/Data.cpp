@@ -1,7 +1,5 @@
 #include "Data.h"
 
-#include <sstream>
-
 using namespace std;
 
 // Constructors

@@ -1,20 +1,25 @@
 #pragma once
 
 #include <vector>
-#include <string>
+#include "Professor.h"
+#include "Utente.h"
 
-#include "Pessoa.h"
+
+class Piscina {
+	//  experiencia
+	std::vector<Utente> utentes;
+	std::vector<Professor> professoress;
+
+	//
 
 
-class Piscina{
 	vector<Pessoa * > clientes;
 	vector<Pessoa *> professores;
 	int capacidade, numClientesAula;
-
 	string nome;
 public:
 	Piscina(string nome, int capacidade);
-	~Piscina();
+	Piscina();
 
 	string getNome() const;
 
@@ -22,4 +27,33 @@ public:
 	void addClientes(Pessoa *cliente);
 	vector<Pessoa* > getProfessores() const;
 	void addProfessores(Pessoa *professor);
+
+	//
+
+	vector<Utente> getUtentes();
+
+
+	vector<Professor> getProfessores();
+
+
+	vector<int> getIDs();
+
+	bool Piscina::idExiste(int id);
+
+	void Piscina::insertUtente(Utente c);
+
+	void Piscina::insertProfessor(Professor c);
+
+	void Piscina::removeUtente(int id);
+
+	void Piscina::removeProfessor(int id);
+
+	void Piscina::sortUtentesPerName();
+
+	void Piscina::printUtentes();
+
+	void Piscina::sortProfessoresPerName();
+
+	void Piscina::printProfessores();
 };
+//
