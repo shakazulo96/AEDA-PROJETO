@@ -28,9 +28,10 @@ public:
 	std::vector<Utente* > getClientes() const;
 	void addClientes(Utente *cliente);
 
+
 	int eCliente(Pessoa *cliente);
 	int estaNaPiscina(Pessoa *cliente);
-	bool podeEntrar(Pessoa *cliente, Data *data);
+	bool podeEntrar(Utente *cliente, Data *data);
 
 	std::vector<Professor * > getProfessores() const;
 	void addProfessores(Professor *professor);

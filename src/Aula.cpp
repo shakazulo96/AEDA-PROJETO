@@ -3,11 +3,18 @@ using namespace std;
 
 Aula::Aula(int id, int nMaxXlientes){
 	this->id = id;
+	this->clientesAtuais = 0;
 	this->nMaxClientes = nMaxXlientes;
 	professor = false;
 
 }
 
+void Aula::incClientesAtuais(){
+	clientesAtuais++;
+}
+int Aula::getClientesAtuais()const{
+	return clientesAtuais;
+}
 vector<Data* > Aula::getHorario() const{
 	return horario;
 }

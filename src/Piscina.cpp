@@ -50,15 +50,37 @@ int Piscina::eCliente(Pessoa *cliente){
 	}
 	return -1;
 }
-bool Piscina::podeEntrar(Pessoa *cliente, Data *data){
-	if(eCliente(cliente) == -1) return false;
-	if(capacidade > naPiscina.size()){
-		clientes[eCliente(cliente)]->setHorario(data);
-		naPiscina.push_back(cliente);
-		return true;
-	}
 
-	return false;
+bool Piscina::podeEntrar(Utente *cliente, Data *data){
+//	if(eCliente(cliente) == -1) return false;
+//	if(capacidade > naPiscina.size()){
+//		clientes[eCliente(cliente)]->setHorario(data);
+//		naPiscina.push_back(cliente);
+//		return true;
+//	}
+	unsigned int naPiscina = 0;
+	for(unsigned int i = 0; i < clientes.size(); i++){
+		for(unsigned int j = 0; j < clientes[i]->getHorario().size(); j++){
+			if(clientes[i]->getHorario()[j]->getAno() == data->getAno())
+				if(clientes[i]->getHorario()[j]->getMes() == data->getMes())
+					if(clientes[i]->getHorario()[j]->getDia() == data->getDia())
+						if(clientes[i]->getHorario()[j]->getHora() == data->getHora()){
+							naPiscina++;
+						}
+		}
+		for(unsigned int j = 0; j < clientes[i]->getAulas().size(); j++){
+			if(clientes[i]->getAulas()[j]->getHorario()[0]->getAno() == data->getAno())
+				if(clientes[i]->getAulas()[j]->getHorario()[0]->getMes() == data->getMes())
+					if(clientes[i]->getAulas()[j]->getHorario()[0]->getDia() == data->getDia())
+						if(clientes[i]->getAulas()[j]->getHorario()[0]->getHora() == data->getHora()){
+							naPiscina++;
+						}
+		}
+
+	}
+	if(naPiscina >= capacidade) return false;
+
+	return true;
 }
 
 void Piscina::diferencaSaldo(Utente *c,int conta, int preco) {

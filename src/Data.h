@@ -17,6 +17,7 @@ public:
 	Data(std::string s);
 	std::string toString();
 	int getMes()const;
+	int getDia()const;
 	int getAno()const;
 	int getHora()const;
 	int getMinuto() const;

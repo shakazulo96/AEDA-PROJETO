@@ -62,7 +62,9 @@ bool Data::isValid()
 		return false;
 	return true;
 }
-
+int Data::getDia() const{
+	return dia;
+}
 int Data::getHora()const{
 	return hora;
 }

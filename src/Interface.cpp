@@ -40,7 +40,7 @@ int getCommand(){
 	cout << "O que pretende fazer?" << endl;
 	cout << "1 - Adicionar" << endl;
 	cout << "2 - Remover" << endl;
-	cout << "3 - ------" << endl;
+	cout << "3 - Entrar" << endl;
 	cout << "4 - Mostrar" << endl;
 	cout << "5 - Sair" << endl;
 
@@ -312,7 +312,76 @@ void removeScreen(Piscina & p)
 	}
 }
 
-void updateScreen(Piscina & p){}
+void updateScreen(Piscina & p){
+	system("cls");
+	cout << "Onde pretende entrar?" << "\n";
+	cout << "1 - Entrar na Piscina?" << endl;
+	cout << "2 - Entrar em Aula?" << endl;
+	int ID = 0, ID2 = 0;
+	Data *data;
+	string t = " ";
+	int command = getNextNumber<int>();
+	switch (command){
+		case 1:
+			system("cls");
+			cout << "Qual e o ID do utente?" << endl;
+			ID = getNextNumber<int>();
+
+			cin.ignore(10000, '\n');
+			cout << "Qual e a data da aula?(dia/mes/ano-hora/minuto)" << endl;
+			getline(cin, t);
+
+				if (!Data(t).isValid()){
+					cout << "Data invalida" << endl;
+					system("pause");
+					break;
+				}
+
+				data= new Data(t);
+
+				if(!p.getClientes().empty()){
+				for(unsigned int i = 0; i < p.getClientes().size(); i++){
+					if(p.getClientes()[i]->getID() == ID){
+						if(!p.podeEntrar(p.getClientes()[i],data)) cout << "Falso, não pode entrar" << "\n";
+						else cout << "True, pode entrar" << "\n";
+						break;
+					}
+				}
+				}
+				else cout << "Não exite um cliente com esse ID" << "\n";
+				break;
+		case 2:
+			system("cls");
+			cout << "Qual e o ID do utente?" << endl;
+			ID = getNextNumber<int>();
+
+			cout << "Qual e o ID da aula?" << endl;
+			ID2 = getNextNumber<int>();
+
+			for(unsigned int i = 0; i < p.getClientes().size(); i++){
+				if(p.getClientes()[i]->getID() == ID){
+					for(unsigned int j = 0; j < p.getAulas().size();j++){
+						if(p.getAulas()[j]->getId() == ID2){
+							if((p.getAulas()[j]->getNMaxClientes()) > (p.getAulas()[j]->getClientesAtuais())){
+								p.getClientes()[i]->addAula(p.getAulas()[j]);
+								p.getAulas()[j]->incClientesAtuais();
+								cout << "Entrou na aula \n";
+								break;
+							}
+							else cout << "Está cheia \n";
+						}
+					}
+				}
+			}
+			cout << "Não entrou na aula \n";
+			break;
+
+	default:
+			break;
+
+
+	}
+}
 
 void showScreen(Piscina & p)
 {
