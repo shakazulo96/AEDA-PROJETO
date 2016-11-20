@@ -73,13 +73,13 @@ int main() {
 		vector<string> filenames = Filenames();
 
 		// Load From Files
-		load(p, filenames);
+		//load(p, filenames);
 
 		// Application Loop
 		Interface(p);
 
 		// Save to Files
-		save(p, filenames);
+		//save(p, filenames);
 
 		// Goodbye
 		goodbye();

@@ -12,6 +12,8 @@ public:
 	std::vector<Data* > getHorario() const;
 	void setHorario(Data *data);
 	int getId() const;
+	int getNMaxClientes() const;
 	bool temProfessor() const;
 	void setTemProfessor();
+	friend std::ostream& operator<< (std::ostream &out, Aula *a);
 };

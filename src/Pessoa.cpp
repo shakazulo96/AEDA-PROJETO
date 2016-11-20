@@ -6,6 +6,7 @@ Pessoa::Pessoa(int ID, string nome, Data adesao){
 	this->nome = nome;
 	this->ID = ID;
 	this->adesao = adesao;
+	aulas.clear();
 
 }
 

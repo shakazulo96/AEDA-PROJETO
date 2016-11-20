@@ -35,7 +35,7 @@ public:
 	std::vector<Professor * > getProfessores() const;
 	void addProfessores(Professor *professor);
 
-	void Piscina::diferencaSaldo(Utente *c, int conta, int preco);
+	void diferencaSaldo(Utente *c, int conta, int preco);
 
 	float valorAPagar(Pessoa *cliente, int ano, int mes);
 
@@ -53,7 +53,7 @@ public:
 
 	int atribuiAulas();
 
-	void Piscina::printAulas();
+	void printAulas();
 
 //	void sortUtentesPerName();
 

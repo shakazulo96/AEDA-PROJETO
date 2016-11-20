@@ -5,7 +5,7 @@ class Professor : public Pessoa{
 
 public:
 	Professor(int ID, std::string nome, Data adesao);
-    std::string Professor::toString();
+    std::string toString();
 };
 
 

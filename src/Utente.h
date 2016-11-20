@@ -8,7 +8,7 @@ public:
 	
 	Utente(int ID, std::string nome, Data adesao,int saldo);
 
-	std::string Utente::toString();
+	std::string toString();
 
 	int getSaldo();
 

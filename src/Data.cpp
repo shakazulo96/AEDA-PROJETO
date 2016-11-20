@@ -63,10 +63,16 @@ bool Data::isValid()
 	return true;
 }
 
+int Data::getHora()const{
+	return hora;
+}
+int Data::getMinuto() const{
+	return minuto;
+}
 // Operator Overloading
 std::ostream& operator<<(std::ostream& os, const Data& d)
 {
-	os << d.hora << "/" << d.minuto;
+	os << d.getHora() << "/" << d.getMinuto();
 	return os;
 }
 

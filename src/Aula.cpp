@@ -22,6 +22,14 @@ bool Aula::temProfessor() const{
 	return professor;
 }
 void Aula::setTemProfessor(){
-	if(!professor) professor = true;
-	if(professor) professor = false;
+	professor = true;
+}
+int Aula::getNMaxClientes()const{
+	return nMaxClientes;
+}
+std::ostream& operator<< (std::ostream &out,  Aula *a)
+{
+	out << a->getId() << " ; " << a->getNMaxClientes() << " ; " << a->getHorario()[0]->toString() << " ; " << a->temProfessor();
+
+    return out;
 }

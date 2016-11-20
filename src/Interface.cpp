@@ -99,18 +99,21 @@ void addScreen(Piscina & p)
 	cout << "1 - Adicionar Utente" << endl;
 	cout << "2 - Adicionar professor" << endl;
 	cout << "3 - Adicionar Aula" << endl;
-	cout << "4 - Return" << endl;
+	cout << "4 - Atribuir Aulas aos Professores" << endl;
+	cout << "5 - Return" << endl;
 
 	// Get Command
 	int command = getNextNumber<int>();
 
 	// Decision Variables
 	string name;
-	int ID;
+	int ID, cenas, aulasSemProf;
 	string t;
 	Utente *c;
 	Professor *r;
+	Aula *aula;
 	int saldo;
+	Data *dataAula;
 
 	// Decision
 	switch (command)
@@ -187,14 +190,48 @@ void addScreen(Piscina & p)
 			break;
 		}
 
-	
+
 		r = new Professor(ID,name, t);
 		p.addProfessores(r);
 
 		break;
 	case 3:
+		system("cls");
+		cout << "Qual e o ID da Aula?" << endl;
+		ID = getNextNumber<int>();
+
+		if (ID < 0){
+			cout << "ID invalido" << endl;
+			system("pause");
+			break;
+		}
 
 
+		cout << "Qual e o numero maximo de clientes?" << endl;
+		cenas = getNextNumber<int>();
+		cin.ignore(10000, '\n');
+		cout << "Qual e a data da aula?(dia/mes/ano-hora/minuto)" << endl;
+		getline(cin, t);
+
+		if (!Data(t).isValid()){
+			cout << "Data invalida" << endl;
+			system("pause");
+			break;
+		}
+
+
+		aula = new Aula(ID, cenas);
+		dataAula = new Data(t);
+		aula->setHorario(dataAula);
+		p.addAulas(aula);
+		break;
+	case 4:
+		system("cls");
+
+		cin.ignore(10000, '\n');
+		aulasSemProf = p.atribuiAulas();
+		cout << "Número de aulas sem professor: " << aulasSemProf << "\n";
+		break;
 	default:
 		break;
 	}
@@ -266,6 +303,7 @@ void removeScreen(Piscina & p)
 		break;
 
 	case 3:
+
 
 
 

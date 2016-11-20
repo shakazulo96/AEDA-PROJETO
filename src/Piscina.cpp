@@ -182,7 +182,7 @@ int Piscina::atribuiAulas(){
 	if(aulas.empty()) return 0;
 	if(!professores.empty()){
 		for(unsigned int k = 0; k < 10; k++){
-		for(unsigned int i = 0; i < professores.size(); i++){
+			for(unsigned int i = 0; i < professores.size(); i++){
 				if (professores[i]->getAulas().size() == numeroDeAulas){
 					for(unsigned int j = 0; j < aulas.size(); j++){
 						////////////////////////////////////////////////////////
@@ -198,7 +198,9 @@ int Piscina::atribuiAulas(){
 			}
 		numeroDeAulas++;
 		}
+	}
 		 //número de aulas que ficaram sem professor //supondo que cada professor tem no maximo 10 aulas
+	if(!aulas.empty()){
 		for(unsigned int i = 0; i < aulas.size(); i++){
 			if(aulas[i]->temProfessor() == false) somador++;
 		}
