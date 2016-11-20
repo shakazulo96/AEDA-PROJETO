@@ -343,7 +343,10 @@ void updateScreen(Piscina & p){
 				for(unsigned int i = 0; i < p.getClientes().size(); i++){
 					if(p.getClientes()[i]->getID() == ID){
 						if(!p.podeEntrar(p.getClientes()[i],data)) cout << "Falso, não pode entrar" << "\n";
-						else cout << "True, pode entrar" << "\n";
+						else {
+							p.getClientes()[i]->setHorario(data);
+							cout << "True, pode entrar" << "\n";
+						}
 						break;
 					}
 				}
