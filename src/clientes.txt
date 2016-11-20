@@ -1,0 +1,11 @@
+123 ; Alberto Santos ; 13/5/1994-23:12 ; 2500
+123456 ; Augusto Vieira ; 23/4/1975-12:12 ; 0
+123456789 ; Julio Ferreira ; 12/12/2012-13:14 ; 0
+1234 ; Eduardo Leite ; 23/12/1990-23:59 ; 0
+1234567 ; Eduardo Leite ; 23/12/1990-23:59 ; 0
+1123 ; Eduardo Leite ; 12/12/1912-11:12 ; 0
+12344 ; Eduardo Leite ; 12/12/1990-11:12 ; 0
+11223344 ; Eduardo Leite ; 12/12/1990-11:12 ; 0
+2233 ; Eduardo Leite ; 12/12/1990-11:12 ; 2500
+111333 ; Queirogas ; 12/12/1990-11:12 ; 5000
+5566 ; Goncalinho Leaozinho ; 11/11/1990-11:11 ; 500

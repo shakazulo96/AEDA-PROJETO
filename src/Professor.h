@@ -1,15 +1,11 @@
 #pragma once
 #include "Pessoa.h"
 
-using namespace std;
-
-class Professor : public Pessoa
-{
-private:
-	vector<Data> Horario;
+class Professor : public Pessoa{
 
 public:
-	Professor();
-	Professor(string nome);
-	Professor(int ID, string nome, Data adesao);
+	Professor(int ID, std::string nome, Data adesao);
+    std::string Professor::toString();
 };
+
+

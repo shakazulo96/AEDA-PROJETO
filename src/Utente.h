@@ -1,16 +1,18 @@
 #pragma once
-
 #include "Pessoa.h"
-#include "Data.h"
-
-using namespace std;
-
 class Utente : public Pessoa{
-	// int numerosessoes30min
-	
+
+	int saldo;
+	std::vector<Data *> horario;
 public:
-	Utente();
-	Utente(string nome);
-	Utente(int id, string n, Data d);
 	
+	Utente(int ID, std::string nome, Data adesao,int saldo);
+
+	std::string Utente::toString();
+
+	int getSaldo();
+
+	void setSaldo(int s);
+
+    friend std::ostream& operator<< (std::ostream &out, Utente *c);
 };

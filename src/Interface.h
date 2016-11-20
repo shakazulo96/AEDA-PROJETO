@@ -25,3 +25,5 @@ void updateScreen(Piscina & p);
 void showScreen(Piscina & p);
 
 void secondScreen(Piscina & p);
+
+void goodbye();

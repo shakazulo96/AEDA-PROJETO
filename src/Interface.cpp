@@ -1,30 +1,28 @@
+#include <cstdlib>
 #include "Interface.h"
+#include "Utente.h"
+#include "Professor.h"
 
 using namespace std;
 
 
-void welcome()
-{
+void welcome(){
 	system("cls");
-	cout << "Welcome to the supermarket software" << endl;
+	cout << "Bem vindo ao software piscina 2.0" << endl;
 	system("pause");
 }
 
-vector<string> Filenames()
-{
+vector<string> Filenames(){
 	vector<string> ret;
-	ret.push_back("filenumber1");
-	ret.push_back("filenumber2");
-	ret.push_back("filenumber3");
+	ret.push_back("clientes.txt");
+	ret.push_back("professores.txt");
+	ret.push_back("aulas.txt");
 	return ret;
-
 }
 
 template<typename T>
-T getNextNumber()
-{
+T getNextNumber(){
 	T command = -1;
-
 	cin >> command;
 
 	if (cin.fail())
@@ -36,8 +34,7 @@ T getNextNumber()
 	return command;
 }
 
-int getCommand()
-{
+int getCommand(){
 	system("cls");
 
 	cout << "O que pretende fazer?" << endl;
@@ -111,86 +108,92 @@ void addScreen(Piscina & p)
 	string name;
 	int ID;
 	string t;
-		
+	Utente *c;
+	Professor *r;
+	int saldo;
 
 	// Decision
 	switch (command)
 	{
 	case 1:
 		system("cls");
-		cout << "Qual é o ID do utente?" << endl;
+		cout << "Qual e o ID do utente?" << endl;
 		ID = getNextNumber<int>();
 
 		if (ID < 0)
 		{
-			cout << "ID inválido" << endl;
+			cout << "ID invalido" << endl;
 			system("pause");
 			break;
 		}
 
-		if (p.idExiste(ID))
+		if (p.existeID(ID))
 		{
-			cout << "Este ID já existe" << endl;
+			cout << "Este ID ja existe" << endl;
 			system("pause");
 			break;
 		}
 
 		cin.ignore(10000, '\n');
-		cout << "Qual é o nome do utente?" << endl;
+		cout << "Qual e o nome do utente?" << endl;
 		getline(cin, name);
 
-		cout << "Qual é a data de adesão do utente?" << endl;
+		cout << "Qual e a data de adesao do utente?(dia/mes/ano-hora/minuto)" << endl;
 		getline(cin, t);
 
 		if (!Data(t).isValid())
 		{
-			cout << "Invalid Date" << endl;
+			cout << "Data invalida" << endl;
 			system("pause");
 			break;
 		}
-
-		p.insertUtente(*(new Utente(ID, name, Data(t))));
+		cout << "Qual e o saldo do cliente?(€)" << endl;
+		cin >> saldo;
+		c = new Utente(ID, name, t, saldo);
+		p.addClientes(c);
 
 		break;
 
 	case 2:
 		system("cls");
-		cout << "Qual é o ID do professor?" << endl;
+		cout << "Qual e o ID do professor?" << endl;
 		ID = getNextNumber<int>();
 
 		if (ID < 0)
 		{
-			cout << "ID inválido" << endl;
+			cout << "ID invalido" << endl;
 			system("pause");
 			break;
 		}
 
-		if (p.idExiste(ID))
+		if (p.existeID(ID))
 		{
-			cout << "Este ID já existe" << endl;
+			cout << "Este ID ja existe" << endl;
 			system("pause");
 			break;
 		}
 
 		cin.ignore(10000, '\n');
-		cout << "Qual é o nome do professor?" << endl;
+		cout << "Qual e o nome do professor?" << endl;
 		getline(cin, name);
 
-		cout << "Qual é a data de adesão do professor?" << endl;
+		cout << "Qual e a data de adesao do professor?(dia/mes/ano-hora/minuto)" << endl;
 		getline(cin, t);
 
 		if (!Data(t).isValid())
 		{
-			cout << "Data inválida" << endl;
+			cout << "Data invalida" << endl;
 			system("pause");
 			break;
 		}
 
-		p.insertProfessor(*(new Professor(ID, name, Data(t))));
+	
+		r = new Professor(ID,name, t);
+		p.addProfessores(r);
 
 		break;
 	case 3:
-		
+
 
 	default:
 		break;
@@ -221,41 +224,41 @@ void removeScreen(Piscina & p)
 	{
 	case 1:
 		system("cls");
-		cout << "Qual é o ID do utente?" << endl;
+		cout << "Qual e o ID do utente?" << endl;
 		ID = getNextNumber<int>();
 
 		if (ID == -1)
 		{
-			cout << "ID inválido" << endl;
+			cout << "ID invalido" << endl;
 			system("pause");
 			break;
 		}
 
-		if (!p.idExiste(ID))
+		if (!p.existeID(ID))
 		{
-			cout << "Este utente não existe" << endl;
+			cout << "Este utente nao existe" << endl;
 			system("pause");
 			break;
 		}
-		p.removeUtente(ID);
+		p.removeCliente(ID);
 		break;
 
 
 	case 2:
 		system("cls");
-		cout << "Qual é o ID do professor?" << endl;
+		cout << "Qual e o ID do professor?" << endl;
 		ID = getNextNumber<int>();
 
 		if (ID == -1)
 		{
-			cout << "ID inválido" << endl;
+			cout << "ID invalido" << endl;
 			system("pause");
 			break;
 		}
 
-		if (!p.idExiste(ID))
+		if (!p.existeID(ID))
 		{
-			cout << "Este professor não existe" << endl;
+			cout << "Este professor nao existe" << endl;
 			system("pause");
 			break;
 		}
@@ -264,7 +267,7 @@ void removeScreen(Piscina & p)
 
 	case 3:
 
-	
+
 
 	default:
 		break;
@@ -278,18 +281,21 @@ void showScreen(Piscina & p)
 	// Interface
 	system("cls");
 
+	int preco = 0;
+	int balance = 0;
+
 	cout << "O que quer visualizar?" << endl;
 	cout << "1 - Mostrar utentes" << endl;
 	cout << "2 - Mostrar professores" << endl;
-	cout << "3 - Ocupação da piscina" << endl;
-	cout << "4 - Mostrar horários" << endl;
-	cout << "5 - Recibo e Contas do utente" << endl;
-	cout << "5 - Voltar" << endl;
+	cout << "3 - Ocupacao da piscina" << endl;
+	cout << "4 - Mostrar aulas" << endl;
+	cout << "5 - Recibo do utente" << endl;
+	cout << "6 - Voltar" << endl;
 
 	// Get Command
 	int command = getNextNumber<int>();
 
-	
+
 
 	// Decision
 	switch (command)
@@ -297,7 +303,7 @@ void showScreen(Piscina & p)
 	case 1:
 
 		system("cls");
-		p.sortUtentesPerName();
+		//p.sortUtentesPerName();
 		p.printUtentes();
 		system("pause");
 
@@ -305,7 +311,7 @@ void showScreen(Piscina & p)
 
 	case 2:
 		system("cls");
-		p.sortProfessoresPerName();
+		//p.sortProfessoresPerName();
 		p.printProfessores();
 		system("pause");
 
@@ -316,23 +322,39 @@ void showScreen(Piscina & p)
 
 		break;
 	case 4:
-		secondScreen(p);
+		system("cls");
+		p.printAulas();
+		system("pause");
 		//---------------------
 
 		break;
 	case 5:
-		//-------------
 		
+		int id;
+		system("cls");
+		cout << "Qual o id do cliente?" << endl;
+		cin >> id;
+		//pesquisar o cliente
+	    // preco = float valorAPagar(cliente, int ano, int mes);
+		 //balance = getSaldo();
+		 //diferencaSaldo(Utente *c, balance, preco);
+		 //cout<< float valorAPagar(cliente, int ano, int mes);
+		
+
+		
+		
+		//-------------
+
 		break;
 
-	
+
 
 	default:
 		break;
 	}
 }
 
-void secondScreen(Piscina & p)
+/*void secondScreen(Piscina & p)
 {
 	// Interface horarios
 	system("cls");
@@ -360,4 +382,11 @@ void secondScreen(Piscina & p)
 	default:
 		break;
 	}
+}*/
+
+void goodbye()
+{
+	system("cls");
+	cout << "Os seus ficheiros foram guardados" << endl;
+	cout << "Obrigado" << endl;
 }

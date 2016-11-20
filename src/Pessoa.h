@@ -1,22 +1,27 @@
 #pragma once
 
-using namespace std;
-
-#include "utils.h"
+#include <vector>
+#include <string>
+#include <iostream>
+#include "Aula.h"
 
 class Pessoa{
+	std::string nome;
+	std::vector<Data *> horario;
+	std::vector<Aula *> aulas;
 	int ID;
-	string nome;
-	vector<Data> horario;
 	Data adesao;
 public:
-	Pessoa();
-	Pessoa(string nome);
-	Pessoa(int id, string n,Data d);
+	Pessoa(int ID, std::string nome, Data adesao);
 
-	string getNome() const;
-	int getID();
-	Data Pessoa::getData();
+	std::string getNome() const;
+	Data getAdesao();
+	void setNome(std::string nome);
+	std::vector<Data* > getHorario() const;
+	void setHorario(Data* data);
+	std::vector<Aula *> getAulas();
+	void addAula(Aula *aula);
+	friend std::ostream& operator<< (std::ostream &out,  Pessoa *p);
 
-	void setNome(string nome);
+	int getID()const;
 };

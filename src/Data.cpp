@@ -1,30 +1,18 @@
 #include "Data.h"
-
 using namespace std;
 
-// Constructors
+//Data::Data(int ano, int mes, int dia, int hora, int minuto){
+//	this->ano = ano;
+//	this->mes = mes;
+//	this->dia = dia;
+//	this->hora = hora;
+//	this->minuto = minuto;
+//}
 
-Data::Data() { dia = 1; mes = 1; ano = 1; hora = 00; minuto = 00; valid = true; }
-
-Data::Data(int d, int m, int a)
-{
-	dia = d;
-	mes = m;
-	ano = a;
-	valid = true;
-
-	isValid();
-}
-
-Data::Data(int d, int m, int a, int h, int n)
-{
-	dia = d;
-	mes = m;
-	ano = a;
+Data::Data(int h, int m) {
 	hora = h;
-	minuto = n;
-	valid = true;
-	isValid();
+	minuto = m;
+
 }
 
 Data::Data(string s)
@@ -42,45 +30,24 @@ Data::Data(string s)
 	ss >> hora;
 	ss >> ignore;
 	ss >> minuto;
+	ss >> ignore;
 
-	valid = isValid();
+	valid = isValid();//isValid();
 }
+Data::Data() { dia = 1; mes = 1; ano = 1; hora = 00; minuto = 00; valid = true; }
 
 string Data::toString()
 {
 	stringstream ss;
-	ss << dia << "/" << mes << "/" << ano;
+	ss << dia << "/" << mes << "/" << ano<<"-"<< hora<<":"<< minuto;
 	return ss.str();
 }
-
-//Gets
-int Data::getDia()
-{
-	return dia;
-}
-
-int Data::getMes()
-{
+int Data::getMes()const{
 	return mes;
 }
-
-int Data::getAno()
-{
+int Data::getAno()const{
 	return ano;
 }
-
-int Data::getHora()
-{
-	return hora;
-}
-
-int Data::getMinuto()
-{
-	return minuto;
-}
-
-
-
 bool Data::isValid()
 {
 	if ((dia < 1) || (dia > 31))
@@ -89,48 +56,17 @@ bool Data::isValid()
 		return false;
 	if (ano < 1)
 		return false;
-	if ((hora < 0) || (hora > 23))
+	if ((hora < 8) || (hora > 18))
 		return false;
 	if ((minuto < 0) || (minuto > 59))
 		return false;
 	return true;
 }
 
-//Sets
-
-void Data::setDia(int d)
-{
-	dia = d;
-	valid = isValid();
-}
-
-void Data::setMes(int m)
-{
-	mes = m;
-	valid = isValid();
-}
-
-void Data::setAno(int a)
-{
-	ano = a;
-	valid = isValid();
-}
-
-void Data::setHora(int h)
-{
-	hora = h;
-	valid = isValid();
-}
-
-void Data::setMinuto(int n)
-{
-	minuto = n;
-	valid = isValid();
-}
-
-  // Operator Overloading
+// Operator Overloading
 std::ostream& operator<<(std::ostream& os, const Data& d)
 {
-	os << d.dia << "/" << d.mes << "/" << d.ano;
+	os << d.hora << "/" << d.minuto;
 	return os;
 }
+

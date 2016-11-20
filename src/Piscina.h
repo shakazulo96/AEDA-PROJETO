@@ -1,59 +1,65 @@
 #pragma once
-
 #include <vector>
-#include "Professor.h"
+#include <string>
+#include <iostream>
+#include "Aula.h"
+#include "Pessoa.h"
 #include "Utente.h"
+#include "Professor.h"
+#include "Data.h"
 
 
-class Piscina {
-	//  experiencia
-	std::vector<Utente> utentes;
-	std::vector<Professor> professoress;
+class Piscina{
+	std::vector<Aula *> aulas;
+	std::vector<Utente *> clientes;
+	std::vector<Pessoa *> naPiscina;
+	std::vector<Professor *> professores;
+	unsigned int capacidade;
+	
+	
 
-	//
-
-
-	vector<Pessoa * > clientes;
-	vector<Pessoa *> professores;
-	int capacidade, numClientesAula;
-	string nome;
+	std::string nome;
 public:
-	Piscina(string nome, int capacidade);
+	Piscina(std::string nome, int capacidade);
 	Piscina();
 
-	string getNome() const;
+	std::string getNome() const;
 
-	vector<Pessoa* > getClientes() const;
-	void addClientes(Pessoa *cliente);
-	vector<Pessoa* > getProfessores() const;
-	void addProfessores(Pessoa *professor);
+	std::vector<Utente* > getClientes() const;
+	void addClientes(Utente *cliente);
 
-	//
+	int eCliente(Pessoa *cliente);
+	int estaNaPiscina(Pessoa *cliente);
+	bool podeEntrar(Pessoa *cliente, Data *data);
 
-	vector<Utente> getUtentes();
+	std::vector<Professor * > getProfessores() const;
+	void addProfessores(Professor *professor);
 
+	void Piscina::diferencaSaldo(Utente *c, int conta, int preco);
 
-	vector<Professor> getProfessores();
+	float valorAPagar(Pessoa *cliente, int ano, int mes);
 
+	bool sairPiscina(Pessoa *cliente);
 
-	vector<int> getIDs();
+	std::vector<Aula* > getAulas() const;
+	void addAulas(Aula *aula);
 
-	bool Piscina::idExiste(int id);
+	int numAulasSemProfessor() const;
 
-	void Piscina::insertUtente(Utente c);
+	bool existeID(int ID);
 
-	void Piscina::insertProfessor(Professor c);
+	void removeCliente(int ID);
+	void removeProfessor(int ID);
 
-	void Piscina::removeUtente(int id);
+	int atribuiAulas();
 
-	void Piscina::removeProfessor(int id);
+	void Piscina::printAulas();
 
-	void Piscina::sortUtentesPerName();
+//	void sortUtentesPerName();
 
-	void Piscina::printUtentes();
+	void printUtentes();
 
-	void Piscina::sortProfessoresPerName();
+//	void sortProfessoresPerName();
 
-	void Piscina::printProfessores();
+	void printProfessores();
 };
-//

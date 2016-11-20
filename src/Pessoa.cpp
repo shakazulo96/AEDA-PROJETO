@@ -2,41 +2,49 @@
 
 using namespace std;
 
-
-//  Constructors
-
-Pessoa::Pessoa() {}
-
-Pessoa::Pessoa(int id, string n,Data d) {
-	ID = id;
-	nome = n;
-	adesao = d;
-}
-
-Pessoa::Pessoa(string nome){
+Pessoa::Pessoa(int ID, string nome, Data adesao){
 	this->nome = nome;
+	this->ID = ID;
+	this->adesao = adesao;
+
 }
 
-//   Gets
-
+Data Pessoa::getAdesao() {
+	return adesao;
+}
 string Pessoa::getNome() const{
 	return nome;
 }
-
-int Pessoa::getID()
-{
-	return ID;
-}
-
-Data Pessoa::getData()
-{
-	return adesao;
-}
-
-
-//   Sets
-
 void Pessoa::setNome(string nome){
 	this->nome = nome;
 }
+
+vector<Data* > Pessoa::getHorario() const{
+	return horario;
+}
+void Pessoa::setHorario(Data* data){
+	horario.push_back(data);
+}
+vector<Aula* > Pessoa::getAulas(){
+	return aulas;
+}
+int Pessoa::getID() const{
+	return ID;
+}
+
+std::ostream& operator<< (std::ostream &out,  Pessoa *p)
+{
+	out << p->getID() << " ; " << p->getNome() << " ; " << p->getAdesao().toString() << " ; " ;
+
+    return out;
+}
+
+
+void Pessoa::addAula(Aula * aula){
+	aulas.push_back(aula);
+}
+
+
+
+
 
